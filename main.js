@@ -34,35 +34,56 @@ function initSwiper() {
     swiperInstance = null; 
   }
 }
-
-
 document.addEventListener("DOMContentLoaded", initSwiper);
-
-
 window.addEventListener("resize", initSwiper);
 
-var wrapperLogoDesctop = document.querySelectorAll(".desctop__table");
-var wrapperLogoHidden = document.querySelectorAll(".hidden");
-var wrapperLogo = document.querySelectorAll(".hidden, .desctop__table");
+let wrapperLogoDesctop = document.querySelectorAll(".desctop__table");
+let wrapperLogoHidden = document.querySelectorAll(".hidden");
+let wrapperLogo = document.querySelectorAll(".hidden, .desctop__table");
 
-var button = document.querySelector(".button-open");
-var buttonClose = document.querySelector(".button-close");
+let button = document.querySelector(".button-open");
+
+
+// button.addEventListener("click", function () {
+//   for (var i = 0; i < wrapperLogo.length; i++) {
+//     wrapperLogo[i].classList.remove("desctop__table", "hidden");
+//   }
+//   button.textContent = 'Скрыть';
+//   button.classList.add("button-close");
+// });
+// var buttonClose = document.querySelector(".button-close");
+// buttonClose.addEventListener("click", function () {
+//   for (var i = 0; i < wrapperLogoHidden.length; i++) {
+//     wrapperLogoHidden[i].classList.add("hidden");
+//   }
+//   for (var i = 0; i < wrapperLogoDesctop.length; i++) {
+//     wrapperLogoDesctop[i].classList.add("desctop__table");
+//   }
+//   button.textContent = 'Показать все';
+  
+//   button.classList.remove("button-close");
+// });
 
 button.addEventListener("click", function () {
-  for (var i = 0; i < wrapperLogo.length; i++) {
+  if (button.textContent === 'Показать все'){
+  for (let i = 0; i < wrapperLogo.length; i++) {
     wrapperLogo[i].classList.remove("desctop__table", "hidden");
   }
-  button.classList.add("hidden");
-});
-
-buttonClose.addEventListener("click", function () {
-  for (var i = 0; i < wrapperLogoHidden.length; i++) {
+  button.textContent = 'Скрыть';
+  button.classList.add("button-close");
+}else {
+  for (let i = 0; i < wrapperLogoHidden.length; i++) {
     wrapperLogoHidden[i].classList.add("hidden");
   }
-  for (var i = 0; i < wrapperLogoDesctop.length; i++) {
+  for (let i = 0; i < wrapperLogoDesctop.length; i++) {
     wrapperLogoDesctop[i].classList.add("desctop__table");
   }
+  button.textContent = 'Показать все';
+  
+  button.classList.remove("button-close");
+}
 
-  buttonClose.classList.add("hidden");
-  button.classList.remove("hidden");
+
+
 });
+
